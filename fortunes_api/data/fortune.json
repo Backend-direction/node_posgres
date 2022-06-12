@@ -1,0 +1,44 @@
+[
+  {
+    "id": 1,
+    "message": "New fortune yep",
+    "lucky_number": 10,
+    "spirit_animal": "zebra"
+  },
+  {
+    "id": 2,
+    "message": "You will find a great treasure.",
+    "lucky_number": 15,
+    "spirit_animal": "Lion"
+  },
+  {
+    "id": 3,
+    "message": "One person will give you great advice.",
+    "lucky_number": 30,
+    "spirit_animal": "Bear"
+  },
+  {
+    "id": 4,
+    "message": "Love will come soon",
+    "spirit_animal": "Zebra",
+    "lucky_number": 19
+  },
+  {
+    "id": 7,
+    "message": "Success awaits you",
+    "lucky_number": 15,
+    "spirit_animal": "Giraffe"
+  },
+  {
+    "id": "b0a67805-509d-4663-9ce4-d9f0ca8654d8",
+    "message": "hello",
+    "lucky_number": 5,
+    "spirit_animal": "wolf"
+  },
+  {
+    "id": "c556a72c-53d0-4764-9e20-6e8ca952dc97",
+    "message": "Here will your adds",
+    "lucky_number": 5,
+    "spirit_animal": "wolfenshteins"
+  }
+]
