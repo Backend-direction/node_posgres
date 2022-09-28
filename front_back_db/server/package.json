@@ -7,10 +7,10 @@
     "start": "ts-node-dev src/index.ts",
     "migration:create": "typeorm-ts-node-commonjs migration:create",
     "migration:generate": "typeorm-ts-node-commonjs migration:generate -d \"./src/db.ts\"",
-    "migration:up": "typeorm-ts-node-commonjs migration:run -d \"./src/db.ts\"",
+    "migration:run": "typeorm-ts-node-commonjs migration:run -d \"./src/db.ts\"",
     "migration:down": "typeorm-ts-node-commonjs migration:revert -d \"./src/db.ts\""
   },
-  "author": "",
+  "author": "Pankiv Volodymyr",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.20.0",

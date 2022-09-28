@@ -12,14 +12,11 @@ export class Project {
 
   @Column({
     type: 'varchar',
-    length: 256,
+    length: 50,
     unique: true,
   })
-  name: string;
+  title: string;
 
-  @Column({ type: 'timestamp', default: Date.now })
+  @Column({ type: 'timestamp' })
   created_at: Timestamp;
-
-  @Column({ type: 'timestamp', default: Date.now })
-  updated_at: Timestamp;
 }

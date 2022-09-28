@@ -2,9 +2,9 @@ import { DataSource } from 'typeorm';
 import { join } from 'path';
 
 import * as dotenv from 'dotenv';
+import { Project } from './Models/project';
 dotenv.config({ path: '../.env' });
 
-console.log(process.env.POSTGRES_DB)
 const AppDataSource = new DataSource({
   type: 'postgres',
   host: process.env.POSTGRES_HOST,
@@ -12,7 +12,7 @@ const AppDataSource = new DataSource({
   username: process.env.POSTGRES_USER,
   password: process.env.POSTGRES_PASSWORD,
   database: process.env.POSTGRES_DB,
-  entities: ['./Models/*.ts'],
+  entities: [Project],
   migrations: [join(__dirname, '/migrations/*.{ts,js}')],
   synchronize: false,
 });
