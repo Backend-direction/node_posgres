@@ -2,3 +2,6 @@
 /fortunes_api/node_modules
 /monster_api/node_modules
 /monster_api/secrets
+
+/front_back_db/client/node_modules
+/front_back_db/server/node_modules
