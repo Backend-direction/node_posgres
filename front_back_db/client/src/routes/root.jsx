@@ -80,7 +80,6 @@ export default function Root() {
       <AppBar position="fixed" open={open}>
         <Toolbar sx={{ background: '#2d3238'}}>
           <IconButton
-            color="inherit"
             aria-label="open drawer"
             onClick={handleDrawerOpen}
             edge="start"
