@@ -17,7 +17,7 @@ import EditContact, {
 } from "./routes/edit";
 import { action as destroyAction } from "./routes/destroy";
 import Index from "./routes/index";
-import Dashboard from './routes/dashboard';
+import Dashboard, { loader as dashboardLoader} from './routes/dashboard';
 import Projects from './routes/projects';
 import Settings from './routes/settings';
 import Upgrade from './routes/upgrade';
@@ -35,6 +35,7 @@ const router = createBrowserRouter([
       {
         path: 'board',
         element: <Dashboard />,
+        loader: dashboardLoader,
       }, 
       {
         path: 'projects',

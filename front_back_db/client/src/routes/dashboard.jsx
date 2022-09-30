@@ -3,7 +3,13 @@ import Box from '@mui/material/Box';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
+import ProjectBoard from '../components/projects-board';
+import UpdateList from '../components/update-list';
 
+export async function loader(params) {
+  console.log('params',params)
+  return [];
+}
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -17,8 +23,8 @@ function TabPanel(props) {
       {...other}
     >
       {value === index && (
-        <Box sx={{ p: 3 }}>
-          <Typography>{children}</Typography>
+        <Box sx={{ py: 3, height: '100%'  }}>
+          {children}
         </Box>
       )}
     </div>
@@ -33,22 +39,22 @@ export default function Dashboard () {
   };
 
   return (
-    <div style={{display: 'flex' }}>
+    <div style={{display: 'flex', height: 'calc(100vh - 112px)' }}>
       <Box sx={{ width: '100%' }}>
         <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
           <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
-            <Tab label="Item One" />
-            <Tab label="Item Two" />
+            <Tab label="Active Projects" />
+            <Tab label="Messenger" />
           </Tabs>
         </Box>
-        <TabPanel value={value} index={0}>
-          Item One
+        <TabPanel value={value} index={0} style={{ height: 'calc(100% - 49px)' }}>
+          <Box sx={{ display: 'flex', height: '100%' }}>
+            <ProjectBoard></ProjectBoard>
+            <UpdateList></UpdateList>
+          </Box>
         </TabPanel>
         <TabPanel value={value} index={1}>
-          Item Two
-        </TabPanel>
-        <TabPanel value={value} index={2}>
-          Item Three
+          Here will messages
         </TabPanel>
       </Box>
     </div>
