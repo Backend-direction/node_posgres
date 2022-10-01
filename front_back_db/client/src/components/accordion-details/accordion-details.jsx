@@ -33,7 +33,7 @@ export default function AccordionDetails({ story }) {
         <Typography variant="caption">{story.name}</Typography>
       </Box>
       <Box className="details__action">
-        <BadgeAvatar />
+        <BadgeAvatar height='30px' width='30px' />
         <Chip 
           icon={<LoopIcon className='details__refresh' />}
           sx={{ mx: 1 }}

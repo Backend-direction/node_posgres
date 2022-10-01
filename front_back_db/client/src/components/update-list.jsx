@@ -1,5 +1,9 @@
-import Stack from '@mui/material/Stack';
-import Box from '@mui/material/Box';
+import List from '@mui/material/List';
+import ListItem from '@mui/material/ListItem';
+import Divider from '@mui/material/Divider';
+import ListItemText from '@mui/material/ListItemText';
+import ListItemAvatar from '@mui/material/ListItemAvatar';
+import * as React from 'react';
 
 import { Typography } from '@mui/material';
 import './update-list.css';
@@ -8,31 +12,37 @@ import BadgeAvatar from './avatar/avatar';
 export default function UpdateList (props) {
   // const { lastUpdates } = props;
   return (
-    <Stack direction="column" spacing={2} className='update-list__container'>
+    <List className='update-list__container' sx={{ bgcolor: 'background.paper' }}>
       {
-        ['1', 2].map(item => {
+        [1,2,3,4,5,6,7,8,9].map((item, index) => {
           return (
-          <Box className='update-list__item'>
-            <BadgeAvatar></BadgeAvatar>
-            <Box>
-              <Box className='update-list__name'>
-                <Typography variant="caption" color="text.secondary">
-                  <Typography variant="caption" component="body1" fontWeight="bold">
-                    Mark P.
-                  </Typography>
-                  add an image into wordla
-                </Typography>
-              </Box>
-              <Box className='update-list__time'>
-                <Typography variant="caption" color="text.secondary">
-                  TODAY, 10:30 PM
-                </Typography>
-              </Box>
-            </Box>
-          </Box>
+            <div key={index}>
+              <ListItem alignItems="flex-start">
+                <ListItemAvatar>
+                  <BadgeAvatar />
+                </ListItemAvatar>
+                <ListItemText
+                  secondary={
+                    <React.Fragment>
+                      <Typography
+                        sx={{ display: 'inline' }}
+                        component="span"
+                        variant="body2"
+                        color="text.primary"
+                      >
+                        Mark p.
+                      </Typography>
+                      {"add an image into wordla"}
+                      <Typography>Today, 10:20 PM</Typography>
+                    </React.Fragment>
+                  }
+                />
+              </ListItem>
+              <Divider variant="inset" component="li" />
+            </div>
           )
         })
       }
-    </Stack>
+    </List>
   )
 }

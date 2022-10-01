@@ -33,6 +33,7 @@ const StyledBadge = styled(Badge)(({ theme }) => ({
 
 export default function BadgeAvatar(props) {
   const isOnline = true;
+  const { width = '40px', height='40px' } = props;
 
   return (
     <StyledBadge
@@ -40,7 +41,7 @@ export default function BadgeAvatar(props) {
       anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
       variant={isOnline ? 'dot' : ''}
     >
-      <Avatar alt="Vova Pankiv" src='./ava.png' sx={{ height: '30px', width: '30px'}} />
+      <Avatar alt="Vova Pankiv" src='./ava.png' sx={{ height, width}} />
     </StyledBadge>
   );
 }
