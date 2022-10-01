@@ -99,7 +99,12 @@ export default function Dashboard () {
     <div style={{display: 'flex', height: 'calc(100vh - 112px)' }}>
       <Box sx={{ width: '100%' }}>
         <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-          <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
+          <Tabs 
+            value={value}
+            textColor="primary" 
+            indicatorColor="primary"
+            onChange={handleChange}
+          > 
             <Tab label="Active Projects" />
             <Tab label="Messenger" />
           </Tabs>

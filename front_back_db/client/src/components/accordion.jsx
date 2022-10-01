@@ -4,10 +4,10 @@ import { styled } from '@mui/material/styles';
 import ArrowForwardIosSharpIcon from '@mui/icons-material/ArrowForwardIosSharp';
 import MuiAccordion from '@mui/material/Accordion';
 import MuiAccordionSummary from '@mui/material/AccordionSummary';
-import MuiAccordionDetails from '@mui/material/AccordionDetails';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import Chip from '@mui/material/Chip';
+import AccordionDetails from './accordion-details/accordion-details';
 
 const Accordion = styled((props) => (
   <MuiAccordion disableGutters elevation={0} square {...props} />
@@ -31,14 +31,14 @@ const AccordionSummary = styled((props) => (
   '& .MuiAccordionSummary-expandIconWrapper': {
     borderRadius: '50%',
     border: '1px solid rgba(0,0,0, 0.54)',
-    width: '25px',
-    height: '25px',
+    width: '30px',
+    height: '30px',
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
   },
   '& .MuiSvgIcon-root': {
-    fill: 'inherit !important' 
+    fill: 'inherit !important',
   },
   '& .MuiAccordionSummary-expandIconWrapper:hover svg' : {
     fill: 'red !important'
@@ -54,11 +54,6 @@ const AccordionSummary = styled((props) => (
     alignItems: 'center',
     justifyContent: 'space-between'
   },
-}));
-
-const AccordionDetails = styled(MuiAccordionDetails)(({ theme }) => ({
-  padding: theme.spacing(2),
-  borderTop: '1px solid rgba(0, 0, 0, .125)',
 }));
 
 export default function CustomizedAccordions(props) {
@@ -78,17 +73,11 @@ export default function CustomizedAccordions(props) {
           <AccordionSummary aria-controls="panel1d-content" id="panel1d-header">
             <Box sx={{ display: 'flex', alignItems: 'center'}}>
               <Box className='progress'>23%</Box>
-              <Typography>{story.name}</Typography>
+              <Typography variant="body2">{story.name}</Typography>
             </Box>
             <Chip sx={{ mr: 1 }} label={story.project} variant="outlined" />
           </AccordionSummary>
-          <AccordionDetails>
-            <Box sx={{ display: 'flex', alignItems: 'center'}}>
-              <Box className='progress'>23%</Box>
-              <Typography>{story.name}</Typography>
-            </Box>
-            <Chip sx={{ mr: 1 }} label={story.project} variant="outlined" />
-          </AccordionDetails>
+          <AccordionDetails story={story} />
         </Accordion>
         )
       })}

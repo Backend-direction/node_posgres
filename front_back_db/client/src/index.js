@@ -32,6 +32,11 @@ const router = createBrowserRouter([
     // loader: rootLoader,
     // action: rootAction,
     children: [
+      { 
+        index: true,
+        element: <Dashboard />,
+        loader: dashboardLoader,
+      },
       {
         path: 'board',
         element: <Dashboard />,
@@ -53,10 +58,6 @@ const router = createBrowserRouter([
         path: 'logout',
         element: <Logout />,
       },
-    //   { 
-    //     index: true,
-    //     element: <Index />
-    //   },
     //   {
     //     path: "contacts/:contactId",
     //     element: <Contact />,
