@@ -1,13 +1,14 @@
+import * as React from 'react';
+
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import Divider from '@mui/material/Divider';
 import ListItemText from '@mui/material/ListItemText';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
-import * as React from 'react';
-
 import { Typography } from '@mui/material';
+
+import BadgeAvatar from '../avatar/avatar';
 import './update-list.css';
-import BadgeAvatar from './avatar/avatar';
 
 export default function UpdateList (props) {
   // const { lastUpdates } = props;

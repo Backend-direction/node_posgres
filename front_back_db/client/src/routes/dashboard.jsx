@@ -3,9 +3,8 @@ import { useLoaderData } from "react-router-dom";
 import Box from '@mui/material/Box';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
-import Typography from '@mui/material/Typography';
-import ProjectBoard from '../components/projects-board';
-import UpdateList from '../components/update-list';
+import ProjectBoard from '../components/project-board/projects-board';
+import UpdateList from '../components/update-list/update-list';
 
 export async function loader() {
   return [

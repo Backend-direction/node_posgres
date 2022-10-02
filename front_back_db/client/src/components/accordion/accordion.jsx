@@ -1,5 +1,5 @@
 import * as React from 'react';
-import './accordion.css';
+
 import { styled } from '@mui/material/styles';
 import ArrowForwardIosSharpIcon from '@mui/icons-material/ArrowForwardIosSharp';
 import MuiAccordion from '@mui/material/Accordion';
@@ -7,7 +7,9 @@ import MuiAccordionSummary from '@mui/material/AccordionSummary';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import Chip from '@mui/material/Chip';
-import AccordionDetails from './accordion-details/accordion-details';
+
+import AccordionDetails from '../accordion-details/accordion-details';
+import './accordion.css';
 
 const Accordion = styled((props) => (
   <MuiAccordion disableGutters elevation={0} square {...props} />
