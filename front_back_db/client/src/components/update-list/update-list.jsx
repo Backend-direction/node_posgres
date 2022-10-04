@@ -34,7 +34,9 @@ export default function UpdateList (props) {
                         Mark p.
                       </Typography>
                       {"add an image into wordla"}
-                      <Typography>Today, 10:20 PM</Typography>
+                      <Typography sx={{ display: 'block' }} component="span" >
+                        Today, 10:20 PM
+                      </Typography>
                     </React.Fragment>
                   }
                 />
