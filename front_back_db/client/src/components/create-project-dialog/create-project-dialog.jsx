@@ -9,6 +9,7 @@ import { FormProvider, useForm } from "react-hook-form";
 import { FormInputText } from '../form/form-input-text';
 import { FormAutocomplete } from '../form/form-autocomplete';
 import { FormInputImage } from '../form/form-input-image';
+import useRequest from '../../hooks/use-request';
 
 const managers = ['MacGonegel', 'Sirius Sneip'];
 
@@ -25,15 +26,26 @@ export default function CreateProjectDialog({ open, handleClose }) {
     shouldUnregister: false
   });
 
+  const { doRequest, errors } = useRequest(
+    {
+      url: '/api/users/signin',
+      method: 'post',
+      body: {},
+      onSuccess: () => handleClose(),
+    },
+  );
+
   const { handleSubmit } = methods;
-  const onSubmit = (data) => console.log(data);
+  const onSubmit = async (data) => {
+    await doRequest(data);
+  };
 
   return (
     <Dialog open={open} onClose={handleClose}>
       <FormProvider {...methods}>
         <form
           onSubmit={handleSubmit((data) => {
-            console.log(data);
+            onSubmit(data)
           })}
         >
           <DialogTitle>

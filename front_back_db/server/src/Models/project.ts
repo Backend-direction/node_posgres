@@ -3,6 +3,8 @@ import {
   Entity,
   PrimaryGeneratedColumn,
   Timestamp,
+  CreateDateColumn,
+  UpdateDateColumn,
 } from 'typeorm';
 
 @Entity()
@@ -15,8 +17,23 @@ export class Project {
     length: 50,
     unique: true,
   })
-  title: string;
+  name: string;
+  
+  @Column({
+    type: 'varchar',
+    length: 250,
+  })
+  description: string;
+  
+  @Column({
+    type: 'varchar',
+    length: 250,
+  })
+  image: string;
 
-  @Column({ type: 'timestamp' })
-  created_at: Timestamp;
+  @CreateDateColumn()
+  created_at: Date
+  
+  @UpdateDateColumn()
+  updated_at: Date
 }

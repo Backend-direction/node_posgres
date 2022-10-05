@@ -9,8 +9,6 @@ services:
     volumes: 
       - /app/node_modules
       - ./server:/app
-    ports:
-      - "3001:3001"
     environment:
       - POSTGRES_HOST=${POSTGRES_HOST}
       - POSTGRES_PORT=${POSTGRES_PORT}
@@ -40,5 +38,11 @@ services:
     volumes:
       - /app/node_modules
       - ./client:/app
+
+  nginx:
+    restart: always
+    build:
+      dockerfile: Dockerfile
+      context: ./nginx
     ports:
-      - "3000:3000"
+      - '3050:80'
