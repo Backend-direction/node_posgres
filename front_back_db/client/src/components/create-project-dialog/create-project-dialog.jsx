@@ -21,16 +21,19 @@ export default function CreateProjectDialog({ open, handleClose }) {
       description: "",
       productOwner: "",
       team: "",
-      image: "./contemplative-reptile.jpg"
+      image: null
     },
     shouldUnregister: false
   });
 
   const { doRequest, errors } = useRequest(
     {
-      url: '/api/users/signin',
+      url: '/api/v1/project',
       method: 'post',
       body: {},
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      },
       onSuccess: () => handleClose(),
     },
   );

@@ -1,13 +1,14 @@
 import axios from 'axios';
 import { useState } from 'react';
 
-export default function useRequest ({ url, method, body, onSuccess}) {
+export default function useRequest ({ url, method, body, onSuccess, headers}) {
   const [errors, setErrors] = useState(null);
 
   const doRequest = async (props = {}) => {
     try {
       setErrors(null);
-      const response = await axios[method](url, { ...body, ...props });
+      console.log(headers)
+      const response = await axios[method](url, { ...body, ...props }, { headers: {...headers} });
 
       if(onSuccess) {
         onSuccess(response.data);

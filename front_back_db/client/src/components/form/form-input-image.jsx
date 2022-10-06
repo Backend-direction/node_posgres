@@ -22,7 +22,7 @@ export const FormInputImage = ({ name }) => {
 
  useEffect(() => {
   if (!selectedFile) {
-      setPreview(undefined)
+      setPreview(null)
       return
   }
 
