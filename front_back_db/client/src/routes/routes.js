@@ -20,11 +20,6 @@ export const router = createBrowserRouter([
         index: true,
         element: <Dashboard />,
         loader: dashboardLoader,
-      },
-      {
-        path: 'board',
-        element: <Dashboard />,
-        loader: dashboardLoader,
         errorElement: <div>Oops! There was an error.</div>,
       }, 
       {

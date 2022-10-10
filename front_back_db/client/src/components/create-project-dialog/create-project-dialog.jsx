@@ -13,7 +13,7 @@ import useRequest from '../../hooks/use-request';
 
 const managers = ['MacGonegel', 'Sirius Sneip'];
 
-export default function CreateProjectDialog({ open, handleClose }) {
+export default function CreateProjectDialog({ open, handleClose, addProject }) {
   const methods = useForm({
     mode: "all",
     defaultValues: {
@@ -34,7 +34,10 @@ export default function CreateProjectDialog({ open, handleClose }) {
       headers: {
         'Content-Type': 'multipart/form-data',
       },
-      onSuccess: () => handleClose(),
+      onSuccess: (project) => {
+        addProject(project);
+        handleClose();
+      },
     },
   );
 

@@ -70,9 +70,9 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
 );
 
 const drawerTopItems = [
-  { title: 'Board', route: 'board', icon: <SpeedIcon /> },
+  { title: 'Board', route: '/', icon: <SpeedIcon /> },
   { title: 'Projects', route: 'projects', icon: <EngineeringIcon />  },
-  { title: 'Settings', route: 'projects', icon: <SettingsIcon /> }
+  { title: 'Settings', route: 'settings', icon: <SettingsIcon /> }
 ];
 
 const drawerBottomItems = [
@@ -109,8 +109,9 @@ export default function MiniDrawer({ drawerState, handleDrawerClose }) {
         <List>
           {drawerTopItems.map((item, index) => (
             <NavLink
+              end
               key={item.title}
-              to={`${item.title}`}
+              to={`${item.route}`}
               className={({ isActive, isPending }) =>
                 isActive
                   ? "active"
