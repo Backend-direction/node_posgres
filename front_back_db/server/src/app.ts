@@ -3,7 +3,7 @@ import path from 'path';
 import 'reflect-metadata';
 import { json } from 'body-parser';
 import { projectRouter } from './Routes/projects';
-// import './db';
+import './db';
 
 const app = express();
 

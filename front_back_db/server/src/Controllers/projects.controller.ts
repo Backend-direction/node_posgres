@@ -3,9 +3,9 @@ import AppDataSource from '../db';
 import { Project } from '../Models/project';
 
 const getProjectList = async (req: Request, res: Response) => {
-  const rawData = await AppDataSource.query(`SELECT * FROM project`);
+  const projects = await AppDataSource.query(`SELECT * FROM project`);
 
-  res.send(rawData);
+  res.send(projects);
 };
 
 const createProject = async (req: any, res: Response) => {
@@ -14,7 +14,7 @@ const createProject = async (req: any, res: Response) => {
 
   project.name = req.body.name;
   project.description = req.body.description;
-  project.image = req.file.originalname;
+  project.image = req.file.filename;
 
   try {
     await projectRepository.save(project);
