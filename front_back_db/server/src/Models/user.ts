@@ -6,34 +6,34 @@ import {
   UpdateDateColumn,
 } from 'typeorm';
 
-@Entity('projects')
-export class Project {
+@Entity('users')
+export class User {
   @PrimaryGeneratedColumn()
   id: number;
 
   @Column({
     type: 'varchar',
     length: 50,
-    unique: true,
   })
   name: string;
   
   @Column({
     type: 'varchar',
-    length: 250,
+    length: 50,
   })
-  description: string;
+  surname: string;
   
   @Column({
     type: 'varchar',
-    length: 250,
+    length: 128,
+    unique: true,
   })
-  image: string;
+  email: string;
   
   @Column({
-    type: 'int',
+    type: 'boolean',
   })
-  rate: number;
+  status: string;
 
   @CreateDateColumn()
   created_at: Date
