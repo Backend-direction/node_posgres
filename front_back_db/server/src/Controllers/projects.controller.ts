@@ -15,6 +15,7 @@ const createProject = async (req: any, res: Response) => {
   project.name = req.body.name;
   project.description = req.body.description;
   project.image = req.file.filename;
+  project.rate = 0;
 
   try {
     await projectRepository.save(project);
