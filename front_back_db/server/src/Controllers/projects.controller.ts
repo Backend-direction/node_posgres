@@ -2,8 +2,8 @@ import { Request, Response } from 'express';
 import AppDataSource from '../db';
 import { Project } from '../Models/project';
 
-const getProjectList = async (req: Request, res: Response) => {
-  const projects = await AppDataSource.query(`SELECT * FROM project`);
+const getProjectList = async (_req: Request, res: Response) => {
+  const projects = await AppDataSource.query(`SELECT * FROM projects`);
 
   res.send(projects);
 };

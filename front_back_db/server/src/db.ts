@@ -6,6 +6,7 @@ import { Project } from './Models/project';
 import { User } from './Models/user';
 import { Team } from './Models/team';
 import { Member } from './Models/team-member';
+import { ProductOwner } from './Models/product-owner';
 dotenv.config({ path: '../.env' });
 
 const AppDataSource = new DataSource({
@@ -15,7 +16,7 @@ const AppDataSource = new DataSource({
   username: process.env.POSTGRES_USER,
   password: process.env.POSTGRES_PASSWORD,
   database: process.env.POSTGRES_DB,
-  entities: [Project, User, Team, Member],
+  entities: [Project, User, Team, Member, ProductOwner],
   migrations: [join(__dirname, '/migrations/*.{ts,js}')],
   synchronize: false,
 });
