@@ -13,7 +13,8 @@ export default function ProjectCard({ project }) {
           component="img"
           height="140"
           image={`/api/${project.image}`}
-          alt="green iguana"
+          alt="project_image"
+          sx={{ objectFit: 'contain' }}
         />
         <CardContent>
           <Typography gutterBottom variant="h5" component="div" sx={{ display: 'flex', justifyContent: 'space-between'}}>

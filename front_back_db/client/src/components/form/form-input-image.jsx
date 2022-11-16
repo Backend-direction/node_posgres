@@ -6,8 +6,8 @@ import Box from '@mui/material/Box';
 
 export const FormInputImage = ({ name }) => {
   const { control } = useFormContext();
-  const [selectedFile, setSelectedFile] = useState()
-  const [preview, setPreview] = useState()
+  const [selectedFile, setSelectedFile] = useState(null)
+  const [preview, setPreview] = useState(null)
 
   const imageElement = useRef();
 
@@ -21,17 +21,44 @@ export const FormInputImage = ({ name }) => {
  }
 
  useEffect(() => {
-  if (!selectedFile) {
-      setPreview(null)
-      return
+    if (!selectedFile) {
+        setPreview(null)
+        return
+    }
+
+    const objectUrl = URL.createObjectURL(selectedFile)
+    setPreview(objectUrl)
+
+    // free memory when ever this component is unmounted
+    return () => URL.revokeObjectURL(objectUrl)
+  }, [selectedFile])
+
+  const imagePreview = () => {
+    if(preview) {
+      return (
+        <img
+          ref={imageElement} 
+          src={preview}
+          alt="screen"
+          style={{ height: "215px", width: '400px', objectFit: 'contain'}} 
+        />
+      )
+    } else {
+      return (
+        <Box 
+          style={{ 
+            width: "100%",
+            height: '215px',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center'
+          }} 
+        >
+          No preview
+        </Box>
+      )
+    }
   }
-
-  const objectUrl = URL.createObjectURL(selectedFile)
-  setPreview(objectUrl)
-
-  // free memory when ever this component is unmounted
-  return () => URL.revokeObjectURL(objectUrl)
-}, [selectedFile])
 
   return (
     <Controller
@@ -41,13 +68,8 @@ export const FormInputImage = ({ name }) => {
         field: { onChange, value },
         fieldState: { error },
       }) => (
-        <Box sx={{ position: 'relative', minHeight: '220px'}}>
-        <img
-          ref={imageElement} 
-          src={preview}
-          alt="screen"
-          style={{ width: "390px"}} 
-        />
+        <Box sx={{ position: 'relative', height: '215px'}}>
+        { imagePreview() }
         <IconButton
           color="primary"
           aria-label="upload picture"
