@@ -10,10 +10,30 @@ import { FormInputText } from '../form/form-input-text';
 import { FormAutocomplete } from '../form/form-autocomplete';
 import { FormInputImage } from '../form/form-input-image';
 import useRequest from '../../hooks/use-request';
+import MuiAlert from '@mui/material/Alert';
+import Snackbar from '@mui/material/Snackbar';
 
 const managers = ['MacGonegel', 'Sirius Sneip'];
 
+const Alert = React.forwardRef(function Alert(
+  props,
+  ref,
+) {
+  return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
+});
+
+
 export default function CreateProjectDialog({ open, handleClose, addProject }) {
+  const [snackbarMessage, setSnackbar] = React.useState('');
+
+  const closeSnackbar= (event, reason) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+
+    setSnackbar('');
+  };
+
   const methods = useForm({
     mode: "all",
     defaultValues: {
@@ -26,7 +46,7 @@ export default function CreateProjectDialog({ open, handleClose, addProject }) {
     shouldUnregister: false
   });
 
-  const { doRequest, errors } = useRequest(
+  const { doRequest } = useRequest(
     {
       url: '/api/v1/project',
       method: 'post',
@@ -38,6 +58,9 @@ export default function CreateProjectDialog({ open, handleClose, addProject }) {
         addProject(project);
         handleClose();
       },
+      onError: (err) => {
+        setSnackbar(err);
+      }
     },
   );
 
@@ -47,59 +70,67 @@ export default function CreateProjectDialog({ open, handleClose, addProject }) {
   };
 
   return (
-    <Dialog open={open} onClose={handleClose}>
-      <FormProvider {...methods}>
-        <form
-          onSubmit={handleSubmit((data) => {
-            onSubmit(data)
-          })}
-        >
-          <DialogTitle>
-            Create new project
-          </DialogTitle>
+    <>
+    
+      <Dialog open={open} onClose={handleClose}>
+        <FormProvider {...methods}>
+          <form
+            onSubmit={handleSubmit((data) => {
+              onSubmit(data)
+            })}
+          >
+            <DialogTitle>
+              Create new project
+            </DialogTitle>
 
-          <DialogContent>
-            <DialogContentText>
-              Here you can create new project with all necessary info
-            </DialogContentText>
+            <DialogContent>
+              <DialogContentText>
+                Here you can create new project with all necessary info
+              </DialogContentText>
 
-            <FormInputImage 
-              name="image"
-            />
+              <FormInputImage 
+                name="image"
+              />
 
-            <FormInputText
-              name="name"
-              label="Name*"
-              rules={{ required: "Required" }}
-            /> 
+              <FormInputText
+                name="name"
+                label="Name*"
+                rules={{ required: "Required" }}
+              /> 
 
-            <FormInputText
-              name="description"
-              label="Description*"
-              rules={{ required: "Required" }}
-            /> 
+              <FormInputText
+                name="description"
+                label="Description*"
+                rules={{ required: "Required" }}
+              /> 
 
-            <FormAutocomplete
-              label={"Assigne PO*"}
-              name="productOwner"
-              options={managers}
-              rules={{ required: "Required" }}
-            />
+              <FormAutocomplete
+                label={"Assigne PO*"}
+                name="productOwner"
+                options={managers}
+                rules={{ required: "Required" }}
+              />
 
-            <FormAutocomplete
-              label={"Assigne team*"}
-              name="team"
-              options={managers}
-              rules={{ required: "Required" }}
-            />
-          </DialogContent>
+              <FormAutocomplete
+                label={"Assigne team*"}
+                name="team"
+                options={managers}
+                rules={{ required: "Required" }}
+              />
+            </DialogContent>
 
-          <DialogActions>
-            <Button onClick={handleClose}>Cancel</Button>
-            <Button onClick={handleSubmit(onSubmit)}>Create</Button>
-          </DialogActions>
-        </form>
-      </FormProvider>
-    </Dialog>
+            <DialogActions>
+              <Button onClick={handleClose}>Cancel</Button>
+              <Button onClick={handleSubmit(onSubmit)}>Create</Button>
+            </DialogActions>
+          </form>
+        </FormProvider>
+      </Dialog>
+      <Snackbar open={!!snackbarMessage} autoHideDuration={6000} onClose={closeSnackbar}>
+        <Alert onClose={closeSnackbar} severity="error" sx={{ width: '100%' }}>
+          {snackbarMessage}
+        </Alert>
+      </Snackbar>
+    </>
   )
 }
