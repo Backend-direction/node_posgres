@@ -51,8 +51,6 @@ const updateOwner = async (req, res) => {
   let result: UpdateResult;
   const productOwnerId = +req.params.id;
   const capacity = req.body.capacity;
-  console.log('productOwnerId',productOwnerId)
-  console.log('capacity',capacity)
 
   const productOwnersRepository = AppDataSource.getRepository(ProductOwner);
 
