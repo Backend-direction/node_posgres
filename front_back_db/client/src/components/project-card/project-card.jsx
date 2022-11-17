@@ -1,26 +1,30 @@
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { CardActionArea } from '@mui/material';
 import Rating from '../rating/rating';
+import CardPreview from '../card-preview/card-preview';
+import Box from '@mui/material/Box';
 
 export default function ProjectCard({ project }) {
+  const src = project.image ? `/api/${project.image}` : '';
+
   return (
     <Card sx={{ maxWidth: 345, minWidth: 200 }}>
       <CardActionArea>
-        <CardMedia
-          component="img"
-          height="140"
-          image={`/api/${project.image}`}
-          alt="project_image"
-          sx={{ objectFit: 'contain' }}
-        />
+        <CardPreview src={src} height='140'/>
         <CardContent>
-          <Typography gutterBottom variant="h5" component="div" sx={{ display: 'flex', justifyContent: 'space-between'}}>
-            {project.name}
+          <Box sx={{ display: 'flex', justifyContent: 'space-between'}}>
+            <Typography 
+              gutterBottom 
+              variant="h5" 
+              component="div" 
+              noWrap 
+            >
+              {project.name}
+            </Typography>
             <Rating />
-          </Typography>
+          </Box>
           <Typography variant="body2" color="text.secondary">
             {project.description}
           </Typography>

@@ -16,8 +16,6 @@ const upload = multer({ storage: storage });
 
 const saveImage = (req, res, next) => {
   return upload.single('image')(req, res, () => {
-    if (!req.file) return res.status(403).send({ errors: 'Invalid file type' } );
-
     next();
   });
 }

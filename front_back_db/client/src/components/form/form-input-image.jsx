@@ -3,6 +3,7 @@ import { Controller, useFormContext } from "react-hook-form";
 import IconButton from '@mui/material/IconButton';
 import PhotoCamera from '@mui/icons-material/PhotoCamera';
 import Box from '@mui/material/Box';
+import CardPreview from '../card-preview/card-preview';
 
 export const FormInputImage = ({ name }) => {
   const { control } = useFormContext();
@@ -69,25 +70,25 @@ export const FormInputImage = ({ name }) => {
         fieldState: { error },
       }) => (
         <Box sx={{ position: 'relative', height: '215px'}}>
-        { imagePreview() }
-        <IconButton
-          color="primary"
-          aria-label="upload picture"
-          component="label"
-          sx={{ position: 'absolute', bottom: '10px', right: '10px'}}
-        >
-          <input 
-            hidden 
-            accept="image/*"
-            type="file"
-            onChange={(e) => {
-              showImage(e);
-              onChange(e.target.files[0]);
-            }}
-          />
-          <PhotoCamera sx={{ fill: '#1976d2 !important'}}/>
-        </IconButton>
-      </Box>
+          <CardPreview src={preview} height='215' width='400' />
+          <IconButton
+            color="primary"
+            aria-label="upload picture"
+            component="label"
+            sx={{ position: 'absolute', bottom: '10px', right: '10px'}}
+          >
+            <input 
+              hidden 
+              accept="image/*"
+              type="file"
+              onChange={(e) => {
+                showImage(e);
+                onChange(e.target.files[0]);
+              }}
+            />
+            <PhotoCamera sx={{ fill: '#1976d2 !important'}}/>
+          </IconButton>
+        </Box>
       )}
     />
   );
